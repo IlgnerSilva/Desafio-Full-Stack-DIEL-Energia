@@ -9,3 +9,28 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id  String @id @default(uuid())
+  username String @unique
+  email String @unique
+  password String
+  todolist TodoList[]
+
+  @@map("users")
+}
+
+model TodoList {
+  id String @id @default(uuid())
+  title String
+  description String
+  task_date String
+  task_time String
+  task_duration String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author User @relation(fields: [authorId], references: [id])
+  authorId String
+
+  @@map("todolist")
+}
