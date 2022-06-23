@@ -27,15 +27,15 @@ class AuthenticateUserUseCase {
         }
 
         // Gerando token do usuário
-        const payload = {
-            id: userAlreadyExists.id
-        }
-        const token = sign(payload, process.env.KEY_TOKEN, {
+        // const payload = {
+        //     id: userAlreadyExists.id
+        // }
+        const token = sign({}, process.env.KEY_TOKEN, {
             subject: userAlreadyExists.id,
             expiresIn: "20s"
         });
 
-        return token
+        return {userAlreadyExists, token}
     }
 }
 
