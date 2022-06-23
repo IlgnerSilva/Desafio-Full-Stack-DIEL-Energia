@@ -7,12 +7,12 @@ class AuthenticateUserController{
         console.log(email)
         const authenticateUserUseCase = new AuthenticateUserUseCase();
 
-        const token = await authenticateUserUseCase.execute({
+        const tokenAndUser = await authenticateUserUseCase.execute({
             email,
             password
         });
 
-        return res.json(token);
+        return res.json(tokenAndUser);
     }
 }
 

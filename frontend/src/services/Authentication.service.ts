@@ -6,10 +6,25 @@ declare interface Credentials {
 }
 
 declare interface User{
-    token: string
+    id: string
+    username: string
 }
 
-export const login = (credentials: Credentials) => {
-    http.post<User>('/auth/user/login', credentials)
-    .then(res => res.data)
+type Token = string
+
+export const login = async(credentials: Credentials) => {
+    const response = await http.post('/auth/user/login', credentials)
+    return response.data;
+}
+
+export const storeToken = (token: Token) => {
+    window.localStorage.setItem('token', token)
+}
+
+export const getToken = () => {
+    return window.localStorage.getItem('token')
+}
+
+export const storeUserId = (id: string) => {
+    window.localStorage.setItem('id', id)
 }

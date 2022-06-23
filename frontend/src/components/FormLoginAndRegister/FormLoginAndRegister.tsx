@@ -1,12 +1,22 @@
 import React, { useState } from "react"
-import { login } from "../../services/Authentication.service";
+import { login, storeToken, storeUserId } from "../../services/Authentication.service";
+import Swal from 'sweetalert2';
 
 export default function FormLoginAndRegister() {
     const [credentials, setCredentials] = useState({email: '', password: ''});
 
     const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await login(credentials);
+        try{
+            const user = await login(credentials);
+            storeToken(user.token)
+            storeUserId(user.id)
+            Swal.fire('oops!', 'err.message', 'success')
+        } catch(err){
+        }
+            // http.defaults.headers.common['Authorization'] = `Bearer ${user.token}`
+
+
     }
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

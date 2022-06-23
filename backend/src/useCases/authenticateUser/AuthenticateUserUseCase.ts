@@ -13,7 +13,7 @@ class AuthenticateUserUseCase {
         const userAlreadyExists = await client.user.findFirst({
             where: {
                 email,   
-            }
+            },
         });
 
         if(!userAlreadyExists){
@@ -35,7 +35,11 @@ class AuthenticateUserUseCase {
             expiresIn: "20s"
         });
 
-        return {userAlreadyExists, token}
+        return {
+            id: userAlreadyExists.id,
+            username: userAlreadyExists.username, 
+            token: token
+        }
     }
 }
 
