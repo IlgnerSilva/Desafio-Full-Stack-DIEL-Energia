@@ -1,4 +1,4 @@
-import { Request, Response } from "express"
+import { Request, Response } from "express";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
 class CreateUserController {
@@ -14,6 +14,13 @@ class CreateUserController {
         });
 
         return res.json(user)
+    }
+
+    async userTaskSearch(req: Request, res: Response){
+        const { id } = req.body;
+        const createUserUseCase = new CreateUserUseCase();
+        const user = await createUserUseCase.taskSearch(id);
+        return res.json(user);
     }
 }
 

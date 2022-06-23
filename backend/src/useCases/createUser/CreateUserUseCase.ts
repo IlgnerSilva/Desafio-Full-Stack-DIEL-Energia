@@ -32,7 +32,14 @@ class CreateUserUseCase {
         });
         
         return user
-    }    
+    }
+    
+    async taskSearch( id: string ){
+        const getUser = await client.todoList.findMany({
+            where: { authorId: id },
+        })
+        return getUser;
+    }
 }
 
 export { CreateUserUseCase }
