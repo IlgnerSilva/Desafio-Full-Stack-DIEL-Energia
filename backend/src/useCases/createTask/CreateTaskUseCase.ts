@@ -7,11 +7,12 @@ interface ITaskRequest {
     task_date: string;
     task_time: string;
     task_duration: string;
+    active: boolean
     authorId: string,
 }
 
 class CreateTaskUseCase {
-    async execute({ title, description, task_date, task_time, task_duration, authorId }: ITaskRequest){
+    async createTask({ title, description, task_date, task_time, task_duration, active, authorId }: ITaskRequest){
         const task = await client.todoList.create({
             data: {
                 title,
@@ -19,6 +20,7 @@ class CreateTaskUseCase {
                 task_date,
                 task_time,
                 task_duration,
+                active,
                 authorId
             }
         });

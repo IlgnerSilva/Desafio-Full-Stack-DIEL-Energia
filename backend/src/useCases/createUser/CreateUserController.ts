@@ -17,9 +17,10 @@ class CreateUserController {
     }
 
     async userTaskSearch(req: Request, res: Response){
-        const { id } = req.body;
+        const { authorId } = req.body;
+        console.log(req.body)
         const createUserUseCase = new CreateUserUseCase();
-        const user = await createUserUseCase.taskSearch(id);
+        const user = await createUserUseCase.taskSearch(authorId);
         return res.json(user);
     }
 }

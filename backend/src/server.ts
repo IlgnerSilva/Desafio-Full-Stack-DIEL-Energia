@@ -13,7 +13,6 @@ app.use(express.json());
 
 app.use(router);
 
-
 app.use((error: Error, req: Request, res: Response, next: NextFunction) =>{
     return res.json({
         status: "Error",

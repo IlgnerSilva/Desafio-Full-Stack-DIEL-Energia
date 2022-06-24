@@ -28,3 +28,4 @@ export const getToken = () => {
 export const storeUserId = (id: string) => {
     window.localStorage.setItem('id', id)
 }
+

@@ -16,6 +16,7 @@ CREATE TABLE "todolist" (
     "task_date" TEXT NOT NULL,
     "task_time" TEXT NOT NULL,
     "task_duration" TEXT NOT NULL,
+    "active" BOOLEAN NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "authorId" TEXT NOT NULL,

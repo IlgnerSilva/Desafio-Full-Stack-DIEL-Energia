@@ -3,10 +3,10 @@ import NavBar from "../components/NavBar/NavBar";
 
 const LoginView: React.FC = () => {
     return (
-        <div>
+        <>
             <NavBar />
             <FormLoginAndRegister />
-        </div>
+        </>
     )
 }
 

@@ -27,6 +27,7 @@ model TodoList {
   task_date String
   task_time String
   task_duration String
+  active Boolean
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   author User @relation(fields: [authorId], references: [id])

@@ -2,17 +2,19 @@ import { Request, Response } from "express";
 import { CreateTaskUseCase } from "./CreateTaskUseCase";
 
 class CreateTaskController {
-    async handle(req: Request, res: Response){
-        const {title, description, task_date, task_time,task_duration, authorId } = req.body
+    async create(req: Request, res: Response){
+        const {title, description, task_date, task_time,task_duration, active, authorId } = req.body
+        console.log(req.body)
 
         const createTaskUseCase = new CreateTaskUseCase();
 
-        const task = await createTaskUseCase.execute({
+        const task = await createTaskUseCase.createTask({
             title,
             description,
             task_date,
             task_time,
             task_duration,
+            active,
             authorId
         });
 
