@@ -4,7 +4,6 @@ import { CreateUserUseCase } from "./CreateUserUseCase";
 class CreateUserController {
     async hadle(req: Request, res: Response){
         const { username, email, password } = req.body;
-        console.log(req.body)
 
         const createUserUseCase = new CreateUserUseCase();
 
@@ -19,7 +18,6 @@ class CreateUserController {
 
     async userTaskSearch(req: Request, res: Response){
         const { authorId } = req.body;
-        console.log(req.body)
         const createUserUseCase = new CreateUserUseCase();
         const user = await createUserUseCase.taskSearch(authorId);
         return res.json(user);

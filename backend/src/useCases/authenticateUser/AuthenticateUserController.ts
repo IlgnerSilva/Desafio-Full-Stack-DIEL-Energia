@@ -14,8 +14,6 @@ class AuthenticateUserController{
         }catch(err){
             return res.status(401).json(err.message);
         }
-
-
     }
 }
 

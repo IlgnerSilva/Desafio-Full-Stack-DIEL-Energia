@@ -1,5 +1,3 @@
-import AddTaskModal from "../AddTaskModal/AddTaskModal";
-
 export default function Buttons(setFilterItens: any) {
     return (
         <div>

@@ -1,6 +1,4 @@
-import TaskItens from "../components/TaskItens/TaskItens";
 import http from "../utils/http";
-
 
 interface Task {
     id?: string;
@@ -14,7 +12,7 @@ interface Task {
 }
 
 export const getTask = async(id: Task) => {
-    const response = await http.post('/busca', {authorId: id});
+    const response = await http.post('/get/task', {authorId: id});
     return response.data;
 }
 
@@ -26,11 +24,15 @@ export const createTask = async(task: Task) => {
 }
 
 export const updateTask = async(item: Task) => {
-    const response = await http.patch('/task/update',  {id: item.id, active: item.active});
+    const response = await http.patch('/task/update',  {id: item.id, active: item.active},  {headers:{
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }});
     return response.data;
 }
 
 export const deleteTask = async(id: Task) => {
-    const response = await http.delete(`/task/delete/${id}`);
+    const response = await http.delete(`/task/delete/${id}`, {headers:{
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }});
     return response.data
 }

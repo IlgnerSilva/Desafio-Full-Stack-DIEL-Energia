@@ -16,7 +16,7 @@ router.post("/auth/user/login", authenticateUserController.handle);
 
 const createTaskController = new CreateTaskController();
 router.post('/register/task', middlewareAuthentication, createTaskController.create)
-router.post("/busca", createUserController.userTaskSearch);
+router.post("/get/task", createUserController.userTaskSearch);
 
 const updateTaskController = new UpdateTaskController();
 router.patch('/task/update', updateTaskController.update)

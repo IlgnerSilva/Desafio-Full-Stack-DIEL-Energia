@@ -3,7 +3,6 @@ import { verify } from "jsonwebtoken";
 
 export function middlewareAuthentication(req: Request, res: Response, next: NextFunction){
     const authToken = req.headers.authorization;
-
     if(!authToken){
         return res.status(401).json({
             message: "Invalid or missing token"
@@ -12,11 +11,9 @@ export function middlewareAuthentication(req: Request, res: Response, next: Next
 
     // Desestruturando token
     const [, token] = authToken.split(" ");
-
     try{
         verify(token, process.env.KEY_TOKEN);
         next();
-        
     }catch(err){
         return res.status(401).json({
             message: "Token invalid"

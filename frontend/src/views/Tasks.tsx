@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import AddTaskModal from "../components/AddTaskModal/AddTaskModal";
-import Buttons from "../components/Buttons/Buttons";
 import NavBar from "../components/NavBar/NavBar";
 import { deleteTask, getTask, updateTask } from "../services/Tasks.service";
 
@@ -46,9 +45,6 @@ const TaskView: React.FC = () => {
     }
 
     const itensToShow = filterItens.filter ? taskItens.filter(item => item.active === filterItens.active) : taskItens
-
-
-
 
     return (
         <>
