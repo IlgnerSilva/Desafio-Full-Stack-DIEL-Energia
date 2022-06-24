@@ -25,6 +25,10 @@ export const getToken = () => {
     return window.localStorage.getItem('token')
 }
 
+export const storeUser = (username: string) => {
+    return window.localStorage.setItem('username', username)
+}
+
 export const storeUserId = (id: string) => {
     window.localStorage.setItem('id', id)
 }

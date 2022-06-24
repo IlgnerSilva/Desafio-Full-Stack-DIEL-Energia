@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createTask } from "../../services/Tasks.service";
+import { createTask, getTask } from "../../services/Tasks.service";
 import InputMask from "react-input-mask";
 import Swal from 'sweetalert2';
 
@@ -23,7 +23,7 @@ export default function AddTaskModal(){
         task_date: '',
         task_time: '',
         task_duration: '',
-        active: false,
+        active: true,
         authorId: id
     });
 
@@ -32,6 +32,7 @@ export default function AddTaskModal(){
         try{
             await createTask(addTask);
             setShowModal(false)
+            window.location.reload()
         } catch (err: any){
             Swal.fire('oops!', err.response.data.message, 'error')
         }
@@ -48,7 +49,7 @@ export default function AddTaskModal(){
 
     return (
         <>
-            <button className="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 m-1 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline" type="button" value="Create an account!" onClick={() => setShowModal(true)}>Oi</button>
+            <button className="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 m-1 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline" type="button" value="Create an account!" onClick={() => setShowModal(true)}>Add Task</button>
             {showModal ? (
                 <>
                     <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">

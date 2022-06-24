@@ -4,7 +4,6 @@ import { CreateTaskUseCase } from "./CreateTaskUseCase";
 class CreateTaskController {
     async create(req: Request, res: Response){
         const {title, description, task_date, task_time,task_duration, active, authorId } = req.body
-        console.log(req.body)
 
         const createTaskUseCase = new CreateTaskUseCase();
 

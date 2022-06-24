@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { login, storeToken, storeUserId } from "../../services/Authentication.service";
+import { login, storeToken, storeUser, storeUserId } from "../../services/Authentication.service";
 import Swal from 'sweetalert2';
 
 export default function FormLoginAndRegister() {
@@ -11,12 +11,14 @@ export default function FormLoginAndRegister() {
             const user = await login(credentials);
             storeToken(user.token)
             storeUserId(user.id)
-            Swal.fire('oops!', 'err.message', 'success')
-        } catch(err){
+            storeUser(user.username)
+            Swal.fire('success!', 'user logged in successfully', 'success')
+            setTimeout(() => {
+                window.location.href = "/task"
+            }, 2000)
+        } catch(err: any){
+            Swal.fire('oops!', err.response.data.message, 'error')
         }
-            // http.defaults.headers.common['Authorization'] = `Bearer ${user.token}`
-
-
     }
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

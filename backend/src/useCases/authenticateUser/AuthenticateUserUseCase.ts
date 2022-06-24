@@ -32,7 +32,7 @@ class AuthenticateUserUseCase {
         // }
         const token = sign({}, process.env.KEY_TOKEN, {
             subject: userAlreadyExists.id,
-            expiresIn: "20s"
+            expiresIn: "1d"
         });
 
         return {
