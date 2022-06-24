@@ -36,6 +36,9 @@ possível.
 ## 💡 Informações de como executar o projeto
 O projeto está hospedado na heroku, porem as vezes há algumas quedas por excesso de memório
 <a href="https://apptaskchallenge.herokuapp.com/">apptaskchallenge</a>
+User admin
+email: admin@admin.com
+password: admin
 
 ## - Você pode clonar o repositório inteiro, onde já estão os dois projetos, backend e frontend.
 
