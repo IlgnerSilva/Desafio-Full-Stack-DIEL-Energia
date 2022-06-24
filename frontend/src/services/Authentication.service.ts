@@ -5,6 +5,12 @@ declare interface Credentials {
     password: string
 }
 
+declare interface RegisterCredentials {
+    registerUsername: string;
+    registerEmail: string;
+    registerPassword: string
+}
+
 declare interface User{
     id: string
     username: string
@@ -14,6 +20,15 @@ type Token = string
 
 export const login = async(credentials: Credentials) => {
     const response = await http.post('/auth/user/login', credentials)
+    return response.data;
+}
+
+export const register = async(registerCredential: RegisterCredentials) => {
+    const response = await http.post('/auth/register/user', {
+        username: registerCredential.registerUsername, 
+        email: registerCredential.registerEmail, 
+        password: registerCredential.registerPassword
+    });
     return response.data;
 }
 

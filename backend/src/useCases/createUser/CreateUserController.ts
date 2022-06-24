@@ -4,6 +4,7 @@ import { CreateUserUseCase } from "./CreateUserUseCase";
 class CreateUserController {
     async hadle(req: Request, res: Response){
         const { username, email, password } = req.body;
+        console.log(req.body)
 
         const createUserUseCase = new CreateUserUseCase();
 
